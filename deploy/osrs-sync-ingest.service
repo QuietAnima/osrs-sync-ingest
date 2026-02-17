@@ -4,9 +4,9 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/home/siimv/osrs-sync-ingest
-EnvironmentFile=/home/siimv/osrs-sync-ingest/.env
-ExecStart=/home/siimv/osrs-sync-ingest/.venv/bin/uvicorn app:app --host ${HOST} --port ${PORT}
+WorkingDirectory=/home/<user>/osrs-sync-ingest
+EnvironmentFile=/home/<user>/osrs-sync-ingest/.env
+ExecStart=/home/<user>/osrs-sync-ingest/.venv/bin/uvicorn app:app --host ${HOST} --port ${PORT}
 Restart=on-failure
 RestartSec=3
 
