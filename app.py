@@ -1,4 +1,5 @@
 import json
+import hmac
 import os
 import sqlite3
 from datetime import datetime, timezone
@@ -44,7 +45,7 @@ def _check_auth(auth_header: str | None):
     if not TOKEN:
         raise HTTPException(status_code=503, detail="Server token not configured")
     expected = f"Bearer {TOKEN}"
-    if auth_header != expected:
+    if not hmac.compare_digest(auth_header or "", expected):
         raise HTTPException(status_code=401, detail="Unauthorized")
 
 
