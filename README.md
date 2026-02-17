@@ -18,7 +18,7 @@ Minimal ingestion service for OSRS sync data.
 - `PORT` (default `8089`)
 - `OSRS_SYNC_DB_PATH` (default `./data/osrs_sync.db`)
 
-## Run
+## Run (local)
 ```bash
 python -m venv .venv
 source .venv/bin/activate
@@ -27,6 +27,16 @@ cp .env.example .env
 # edit .env (set token)
 uvicorn app:app --host 127.0.0.1 --port 8089
 ```
+
+## Run (Docker Compose)
+```bash
+cp .env.example .env
+# edit .env (set token)
+# optional for Docker: set OSRS_SYNC_DB_PATH=/app/data/osrs_sync.db
+docker compose up -d --build
+```
+
+See `deploy/install.md` for deployment options (systemd and Docker Compose).
 
 ## Security
 Never commit secrets or endpoint values.

@@ -1,0 +1,15 @@
+services:
+  osrs-sync-ingest:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: osrs-sync-ingest
+    env_file:
+      - .env
+    environment:
+      OSRS_SYNC_DB_PATH: /app/data/osrs_sync.db
+    ports:
+      - "8089:8089"
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
