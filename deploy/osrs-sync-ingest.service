@@ -1,0 +1,14 @@
+[Unit]
+Description=OSRS Sync Ingest Service
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/siimv/osrs-sync-ingest
+EnvironmentFile=/home/siimv/osrs-sync-ingest/.env
+ExecStart=/home/siimv/osrs-sync-ingest/.venv/bin/uvicorn app:app --host ${HOST} --port ${PORT}
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
